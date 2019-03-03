@@ -1,21 +1,28 @@
 import * as React from 'react';
 import './App.css';
+import { NavView, nav, Page, Tabs } from 'tonva-tools';
+import { startApp } from 'tonva-react-uq';
+import ui from './ui';
+//import { faceTabs } from 'facetabs';
 
-import logo from './logo.svg';
+const tonvaApp = "bruce/SCMBase";
 
 class App extends React.Component {
+
+  private onLogined = async () => {
+    await startApp(tonvaApp, ui);
+    /*
+    let page = <Page header={false}>
+      <Tabs tabs={faceTabs} />
+    </Page>
+    nav.push(page);
+    */
+    //let b = new B('b');
+    //await b.d();
+    //nav.push(<div>ddd</div>)
+  }
   public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <NavView onLogined={this.onLogined} notLogined={this.onLogined} />
   }
 }
 

@@ -1,0 +1,76 @@
+{
+  "ok": true,
+  "res": {
+    "name": "GetRootCategory",
+    "type": "query",
+    "fields": [
+      {
+        "name": "salesRegion",
+        "type": "bigint",
+        "tuid": "salesregion"
+      },
+      {
+        "name": "language",
+        "type": "bigint",
+        "tuid": "language"
+      }
+    ],
+    "returns": [
+      {
+        "name": "first",
+        "fields": [
+          {
+            "name": "productCategory",
+            "type": "bigint",
+            "tuid": "productcategory"
+          },
+          {
+            "name": "name",
+            "type": "char",
+            "size": 200
+          }
+        ]
+      },
+      {
+        "name": "secend",
+        "fields": [
+          {
+            "name": "productCategory",
+            "type": "bigint",
+            "tuid": "productcategory"
+          },
+          {
+            "name": "parent",
+            "type": "bigint"
+          },
+          {
+            "name": "name",
+            "type": "char",
+            "size": 200
+          }
+        ]
+      },
+      {
+        "name": "third",
+        "fields": [
+          {
+            "name": "productCategory",
+            "type": "bigint",
+            "tuid": "productcategory"
+          },
+          {
+            "name": "parent",
+            "type": "bigint"
+          },
+          {
+            "name": "name",
+            "type": "char",
+            "size": 200
+          }
+        ]
+      }
+    ],
+    "typeId": 34,
+    "version": 2
+  }
+}
