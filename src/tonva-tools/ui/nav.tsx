@@ -8,14 +8,14 @@ import {FetchError} from '../fetchError';
 import {appUrl, setMeInFrame, logoutUqTokens} from '../net/appBridge';
 import {LocalData} from '../local';
 import {guestApi, logoutApis, setCenterUrl, setCenterToken, WSChannel, meInFrame, isDevelopment, host} from '../net';
+import { WsBase, wsBridge } from '../net/wsChannel';
+import { resOptions } from './res';
+import { Loading } from './loading';
+
 import 'font-awesome/css/font-awesome.min.css';
 import '../css/va-form.css';
 import '../css/va.css';
 import '../css/animation.css';
-import { WsBase, wsBridge } from '../net/wsChannel';
-import { resOptions } from './res';
-import { Loading } from './loading';
-import { Callbacks, Callback } from './callbacks';
 
 const regEx = new RegExp('Android|webOS|iPhone|iPad|' +
     'BlackBerry|Windows Phone|'  +
@@ -210,7 +210,20 @@ export class NavView extends React.Component<Props, State> {
     }
 
     popTo(key: number) {
-        throw new Error('to be designed');
+        if (key === undefined) return;
+        if (this.stack.find(v => v.key === key) === undefined) return;
+        while (this.stack.length >0) {
+            let len = this.stack.length;
+            let top = this.stack[len-1];
+            if (top.key === key) break;
+            this.pop();
+        }
+    }
+
+    topKey():number {
+        let len = this.stack.length;
+        if (len === 0) return undefined;
+        return this.stack[len-1].key;
     }
 
     removeCeased() {
@@ -488,22 +501,7 @@ export class Nav {
     saveLocalUser() {
         this.local.user.set(this.user);
     }
-    /*
-    private loginCallbacks = new Callbacks<(user: User)=>Promise<void>>();
-    private logoutCallbacks = new Callbacks<()=>Promise<void>>();
-    registerLoginCallback(callback: (user:User)=>Promise<void>) {
-        this.loginCallbacks.register(callback);
-    }
-    unregisterLoginCallback(callback: (user:User)=>Promise<void>) {
-        this.loginCallbacks.unregister(callback);
-    }
-    registerLogoutCallback(callback: ()=>Promise<void>) {
-        this.logoutCallbacks.register(callback);
-    }
-    unregisterLogoutCallback(callback: ()=>Promise<void>) {
-        this.logoutCallbacks.unregister(callback);
-    }
-    */
+
     async logined(user: User, callback?: (user:User)=>Promise<void>) {
         let ws:WSChannel = this.ws = new WSChannel(this.wsHost, user.token);
         ws.connect();
@@ -520,9 +518,9 @@ export class Nav {
         }
     }
 
-    async showLogin(callback?: (user:User)=>Promise<void>, withBack?:boolean) {
+    async showLogin(callback?: (user:User)=>Promise<void>, top?:any, withBack?:boolean) {
         let lv = await import('../entry/login');
-        let loginView = <lv.default withBack={withBack} callback={callback} />;
+         let loginView = <lv.default withBack={withBack} callback={callback} top={top} />;
         if (withBack !== true) {
             this.nav.clear();
             this.pop();
@@ -563,6 +561,11 @@ export class Nav {
             await callback();
     }
 
+    async changePassword() {
+        let cp = await import('../entry/changePassword');
+        nav.push(<cp.ChangePasswordPage />);
+    }
+
     get level(): number {
         return this.nav.level;
     }
@@ -586,6 +589,12 @@ export class Nav {
     }
     pop(level:number = 1) {
         this.nav.pop(level);
+    }
+    topKey():number {
+        return this.nav.topKey();
+    }
+    popTo(key:number) {
+        this.nav.popTo(key);
     }
     clear() {
         this.nav.clear();

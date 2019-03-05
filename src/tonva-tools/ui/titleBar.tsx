@@ -64,9 +64,9 @@ export class TitleBar extends React.Component<TitleBarProps, TitleBarState> {
             if (typeof logout === 'boolean' && logout === true
                 || typeof logout === 'function')
             {
-                let name : string = nav.user && (nav.user.nick || nav.user.name);
+                let {nick, name} = nav.user;
                 debugLogout = <div className="d-flex align-items-center">
-                    <small className="text-light">{name}</small>
+                    <small className="text-light">{nick || name}</small>
                     <a className="dropdown-toggle btn btn-secondary btn-sm ml-2"
                         role="button"
                         onClick={this.logoutClick}>
