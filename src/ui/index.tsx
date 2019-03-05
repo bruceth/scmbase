@@ -10,10 +10,7 @@ const ui: AppUI = {
     CApp: CSCMApp,
     main: VHome,
     uqs: {
-        'SCM/order': orderUI,
-        'SCM/product': productUI,
-        'SCM/customer': customerUI,
-        'SCM/warehouse': warehouseUI,
+        'SCM/product': productUI
     }
 }
 

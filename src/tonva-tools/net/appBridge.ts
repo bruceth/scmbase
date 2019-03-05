@@ -175,7 +175,12 @@ export async function loadAppUqs(appOwner:string, appName): Promise<App> {
     let unit = meInFrame.unit;
     let ret = await centerAppApi.uqs(unit, appOwner, appName);
     centerAppApi.checkUqs(unit, appOwner, appName).then(v => {
-        if (v === false) nav.start();
+        if (v === false) {
+            //修正无限刷新死循环
+            localStorage.removeItem('appUqs');
+            //
+            nav.start();
+        }
     });
     return ret;
 }

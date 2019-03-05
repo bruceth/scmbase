@@ -4,8 +4,11 @@ import { CApp, CUq } from 'tonva-react-uq';
 import { CHome } from './home/CHome';
 import { CFunctionCategory } from 'functionCategory/CFunctionCategory';
 import { consts } from './home/consts';
+import { WebUser } from 'CurrentUser';
 
 export class CSCMApp extends CApp {
+
+    currentUser: WebUser;
 
     currentSalesRegion: any;
     currentLanguage: any;
@@ -16,7 +19,7 @@ export class CSCMApp extends CApp {
     protected async internalStart() {
 
         if (this.isLogined) {
-            // this.currentUser.user = this.user;
+            //this.currentUser.user = this.user;
         }
 
         this.cFunctionCategory = new CFunctionCategory(this, undefined);
