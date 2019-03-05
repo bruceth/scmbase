@@ -9,4 +9,11 @@ export const findPage = (name) => {
       loading: Loading
     });
   }
+  else if (name === "supplierTab") {
+    
+    return Loadable({
+      loader: ()=>import('./supplier/tab'),
+      loading: Loading
+    });
+  }
 }
