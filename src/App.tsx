@@ -5,12 +5,10 @@ import { startApp } from 'tonva-react-uq';
 import ui from './ui';
 //import { faceTabs } from 'facetabs';
 
-const tonvaApp = "bruce/SCMBase";
-
 class App extends React.Component {
 
   private onLogined = async () => {
-    await startApp(tonvaApp, ui);
+    await startApp(ui);
     /*
     let page = <Page header={false}>
       <Tabs tabs={faceTabs} />

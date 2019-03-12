@@ -5,11 +5,14 @@ import orderUI from './order';
 import productUI from './product';
 import customerUI from './customer';
 import warehouseUI from './warehouse';
+import $unitx from './$unitx';
 
 const ui: AppUI = {
+    appName: "bruce/SCMBase",
     CApp: CSCMApp,
     main: VHome,
     uqs: {
+        "$$$/$unitx": $unitx,
         'SCM/product': productUI
     }
 }
