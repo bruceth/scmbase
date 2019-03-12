@@ -4,7 +4,7 @@ import { nav, Page, Loading } from 'tonva-tools';
 import { List, SearchBox } from 'tonva-react-form';
 import logo from 'logo.svg';
 
-const aContent = () => {
+const aContent = (param:any) => {
     let products = [
         {id: 1, discription: '水', price: 2.5},
         {id: 2, discription: '盐', price: 30.99},
