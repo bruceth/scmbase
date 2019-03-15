@@ -12,6 +12,7 @@ const ui: AppUI = {
     CApp: CSCMApp,
     main: VHome,
     uqs: {
+        '$$$/$unitx': $unitx,
         'bruce/scmbasedata': productUI
     }
 }

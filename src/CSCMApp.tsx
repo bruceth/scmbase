@@ -18,7 +18,7 @@ export class CSCMApp extends CApp {
     cFunctionCategory: CFunctionCategory;
 
     protected async internalStart() {
-        this.cUqProcut = this.getCUq(consts.uqProduct);
+        this.cUqProcut = this.getCUq(consts.uqBasedata);
         if (this.isLogined) {
             //this.currentUser.user = this.user;
         }

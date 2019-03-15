@@ -23,7 +23,7 @@ export class TestPage extends VPage<CApp> {
             //content = cUsqArr.map((v,i) => 
             //<div key={i}>{v.render()}</div>);
 
-            let cuq = this.controller.getCUq(consts.uqProduct);
+            let cuq = this.controller.getCUq(consts.uqBasedata);
             let {tuidArr} = cuq.entities;
             let mid = cuq.tuid("manufactor");
             let tuidLinks = new CLink(cuq.cTuidMain(mid));
