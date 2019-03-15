@@ -20,7 +20,7 @@ class App extends React.Component {
     //nav.push(<div>ddd</div>)
   }
   public render() {
-    return <NavView onLogined={this.onLogined} notLogined={this.onLogined} />
+    return <NavView onLogined={this.onLogined} />
   }
 }
 
