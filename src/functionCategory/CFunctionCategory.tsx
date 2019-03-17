@@ -5,9 +5,8 @@ import { VRootCategory } from './VRootCategory';
 import { VCategory } from './VCategory';
 import { CSCMApp } from 'CSCMApp';
 import { nav, Page, Loading, Controller } from 'tonva-tools';
-import Loadable from 'react-loadable';
 import { funcs } from './funcCategories';
-import { findPage, navToPage } from 'pages'
+import { navToPage } from 'pages'
 
 export class CFunctionCategory extends Controller {
 
@@ -36,10 +35,6 @@ export class CFunctionCategory extends Controller {
     if (children === undefined || children.length == 0) {
       
       if (page !== undefined) {
-        // let LoadableComponent = findPage(page);
-        // if (LoadableComponent !== undefined) {
-        //   nav.push(<Page header={name}><LoadableComponent /></Page>);
-        // }
         navToPage(page, this.cApp);
       }
     }

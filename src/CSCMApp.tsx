@@ -10,7 +10,6 @@ import { Controller, VPage } from 'tonva-tools'
 export class CSCMApp extends CApp {
 
     currentUser: WebUser;
-    cUqProcut : CUq;
     currentSalesRegion: any;
     currentLanguage: any;
 
@@ -18,13 +17,9 @@ export class CSCMApp extends CApp {
     cFunctionCategory: CFunctionCategory;
 
     protected async internalStart() {
-        this.cUqProcut = this.getCUq(consts.uqBasedata);
         if (this.isLogined) {
             //this.currentUser.user = this.user;
         }
-
-        let ccc = this.cUqProcut.tuid('product');
-        let ccm = this.cUqProcut.tuid('manufactor');
 
         this.cFunctionCategory = new CFunctionCategory(this, undefined);
         this.cHome = new CHome(this, undefined);

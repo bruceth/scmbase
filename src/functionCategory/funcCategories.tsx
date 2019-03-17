@@ -6,29 +6,34 @@ export const funcs = [
       { name:"商品信息",
         id: 101,
         pid: 1,
-        page: "productTab" }, 
+        page: "product" }, 
       { name: "供应商信息",
         id: 102,
         pid: 1,
-        page: "supplierTab" },
+        page: "supplier" },
       { name: "客户信息",
         id: 103,
-        pid: 1 },
+        pid: 1,
+        page: "customer" },
       { name: "部门信息",
         id: 104,
-        pid: 1 },
+        pid: 1,
+        page: "department" },
       { name: "职员信息",
         id: 105,
-        pid: 1 },
+        pid: 1,
+        page: "staff" },
       { name: "物流中心（自建、委托）",
         id: 106,
         pid: 1 },
       { name: "库区信息（自建）",
         id: 107,
-        pid: 1 },
+        pid: 1,
+        page: "warehouse" },
       { name: "货位信息（自建）",
         id: 108,
-        pid: 1 }
+        pid: 1,
+        page: "goodslocation" }
     ]
   },
   {
@@ -37,7 +42,8 @@ export const funcs = [
     children: [
       { name:"采购订单",
         id: 201,
-        pid: 2 }, 
+        pid: 2,
+        page: "purchase" }, 
       { name: "采购收货（自建）",
         id: 202,
         pid: 2 }, 
@@ -211,6 +217,16 @@ export const funcs = [
             pid: 804 }
         ]
       }, 
+    ]
+  },
+  {
+    name: "测试",
+    id: 9,
+    children: [
+      { name:"全部测试",
+        id: 901,
+        pid: 9,
+        page: "testAllTab" }
     ]
   }
 ]

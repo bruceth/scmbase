@@ -1,32 +1,51 @@
 import * as React from 'react';
-import Loadable from 'react-loadable';
 import { CSCMApp } from 'CSCMApp';
-import { nav, Page, Loading, Controller } from 'tonva-tools';
-import {TestPage} from 'pages/testpage'
-import {TestPage2} from 'pages/testpage2'
+import { nav, Page, VPage, Controller } from 'tonva-tools';
+import { AppUI, CApp, VTuidEdit, VTuidMain, CLink } from 'tonva-react-uq';
+import { consts } from 'home/consts';
+import {TestPage2} from './testpage2'
 
-export const findPage = (name) => {
-  if (name === "productTab") {
-    return Loadable({
-      loader: ()=>import('./product/tab'),
-      loading: Loading
-    });
+const baseInfoNames : string[] = [
+  "product", "supplier", "customer", "department", "staff", "warehouse", "goodslocation"
+]
+
+const sheetNames : string[] = [
+  "purchase"
+]
+
+class NavTuidMainPage extends VPage<CApp> {
+  async open(param?: any) {
+    if (param !== undefined) {
+      let cuq = this.controller.getCUq(consts.uqBasedata);
+      let mid = cuq.tuid(param);
+      if (mid !== undefined) {
+        await cuq.cTuidMain(mid).start();
+      }
+    }
   }
-  else if (name === "supplierTab") {
-    
-    return Loadable({
-      loader: ()=>import('./supplier/tab'),
-      loading: Loading
-    });
+}
+
+class NavSheetPage extends VPage<CApp> {
+  async open(param?: any) {
+    if (param !== undefined) {
+      let cuq = this.controller.getCUq(consts.uqBasedata);
+      let mid = cuq.sheet(param);
+      if (mid !== undefined) {
+        await cuq.cSheet(mid).start();
+      }
+    }
   }
 }
 
 export const navToPage = (name : string, cApp : CSCMApp) => {
-  if (name === "productTab") {
-    cApp.showOneVPage(TestPage, "商品信息");
+  if (baseInfoNames.includes(name)) {
+    cApp.showOneVPage(NavTuidMainPage, name);
   }
-  else if (name === "supplierTab")
+  else if (sheetNames.includes(name)) {
+    cApp.showOneVPage(NavSheetPage, name);
+  }
+  else if (name === "testAllTab")
   {
-    cApp.showOneVPage(TestPage2, "供应商信息")
+    cApp.showOneVPage(TestPage2, "testAllTab")
   }
 }
