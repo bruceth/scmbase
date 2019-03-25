@@ -23,7 +23,7 @@ export class TestPage2 extends VPage<CApp> {
             content = cUsqArr.map((v,i) => 
             <div key={i}>{v.render()}</div>);
         }
-        return <Page header={'供应商信息'}
+        return <Page header={'全部功能'}
           logout={async ()=>{meInFrame.unit = undefined}}>
             <div className="p-3">-------</div>
             {content}

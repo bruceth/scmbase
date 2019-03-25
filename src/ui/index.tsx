@@ -14,4 +14,12 @@ const ui: AppUI = {
     }
 }
 
+export const uiorg: AppUI = {
+    appName: "bruce/SCMBase",
+    CApp: CSCMApp,
+    main: VHome,
+    uqs: {
+    }
+}
+
 export default ui;
