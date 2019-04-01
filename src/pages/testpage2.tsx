@@ -1,5 +1,5 @@
 import React from 'react';
-import { nav, VPage, Page, meInFrame, Controller } from 'tonva-tools';
+import { nav, VPage, Page, appInFrame, Controller } from 'tonva-tools';
 import {AppUI, CApp, VTuidEdit, VTuidMain, CLink} from 'tonva-react-uq';
 import { FA } from 'tonva-react-form';
 import {CSCMApp} from 'CSCMApp'
@@ -24,7 +24,7 @@ export class TestPage2 extends VPage<CApp> {
             <div key={i}>{v.render()}</div>);
         }
         return <Page header={'全部功能'}
-          logout={async ()=>{meInFrame.unit = undefined}}>
+          logout={async ()=>{appInFrame.unit = undefined}}>
             <div className="p-3">-------</div>
             {content}
         </Page>;
