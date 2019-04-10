@@ -2,13 +2,18 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { LMR, Muted } from 'tonva-react-form';
 import { tv, TuidUI, FieldTuidUI } from 'tonva-react-uq';
-import { MyCTuid } from './myCTuid'
+import { MyCTuid } from './myCTuid';
+import { ProductCTuidMain } from './productuid'
+import { PackTypeCTuidMain, PackTypeCTuidSelect} from './packtype'
+import { CustomerCTuidMain, CustomerCTuidSelect, CustomerCTuidEdit } from './customertuid'
 
 const customer:TuidUI = {
-    CTuidMain : MyCTuid,
+    CTuidMain: CustomerCTuidMain,
+    CTuidSelect: CustomerCTuidSelect,
+    CTuidEdit: CustomerCTuidEdit,
     content: (values) => {
-        let {id, discription} = values;
-        return <>{discription || 'id ' + id + ' ...'}</>;
+        let {id, 名称} = values;
+        return <>{名称 || 'id ' + id + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
         let {name} = row;
@@ -48,6 +53,7 @@ const productPackRowContent = observer((values) => {
 });
 
 const product:TuidUI = {
+    CTuidMain : ProductCTuidMain,
     content: (values) => {
         let {id, discription} = values;
         return <>{discription || 'id ' + id + ' ...'}</>;
@@ -61,7 +67,7 @@ const product:TuidUI = {
         return <LMR className="px-3 py-2" left={discription} right={right}/>
     }),
     divs: {
-        pack: {
+        packtype: {
             content: observer((values) => {
                 let {id, ratio, name, $owner} = values;
                 if ($owner === undefined)
@@ -85,20 +91,35 @@ const product:TuidUI = {
 };
 
 const packType:TuidUI = {
+    CTuidMain : PackTypeCTuidMain,
+    CTuidSelect : PackTypeCTuidSelect,
     content: (values) => {
         let {id, name, discription} = values;
-        return <>{discription || name || 'id ' + id + ' ...'}</>;
+        return <>{name || discription || 'id ' + id + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
         let {name, discription} = row;
         let right = <Muted>{discription}</Muted>;
         return <LMR className="px-3 py-2" left={name} right={right}/>
     },
+    divs: {
+        packtype: {
+            content: (values) => {
+                let {id, name, discription} = values;
+                return <>{name || discription || 'id ' + id + ' ...'}</>;
+            },
+            rowContent: (row):JSX.Element => {
+                let {name, discription} = row;
+                let right = <Muted>{discription}</Muted>;
+                return <LMR className="px-3 py-2" left={name} right={right}/>
+            },
+        }
+    }
 };
 
 export default {
-    manufactor: manufactor,
-    customer: customer,
+    生产厂商: manufactor,
+    客户信息: customer,
     product: product,
     packType: packType,
 }

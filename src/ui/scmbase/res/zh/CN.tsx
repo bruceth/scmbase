@@ -20,22 +20,12 @@ export default {
   tuid: '基础档案',
   map: '对照表',
   tuidPlaceHolder: '选择',
+  sheet: '单据',
+  history: '流水账',
   submit: '提交',
   arrNew: '新增',
   arrEdit: '保存',
   entity: {
-    customer: {
-      label: '客户信息',
-      fields: {
-        name: '客户名称'
-      }
-    },
-    manufactor: {
-      label: '生产厂商',
-      fields: {
-        name: '名称'
-      }
-    },
     product: {
       label: '商品信息',
       fields: {
@@ -59,38 +49,8 @@ export default {
         discription: '计量类型(如 重量，长度,单体)',
       },
     },
-    department: {
-      label: '部门信息',
-      fields: {
-        no: '编码',
-      }
-    },
-    goodslocation: {
-      label: '货位信息',
-      fields: {
-        no: '编码',
-      }
-    },
-    staff: {
-      label: '职员信息',
-      fields: {
-        no: '编码',
-      }
-    },
-    supplier: {
-      label: '供应商信息',
-      fields: {
-        name: '名称',
-      }
-    },
-    warehouse: {
-      label: '库区信息',
-      fields: {
-        no: '编码',
-      }
-    },
-    purchase: {
-      label: '采购订单',
+    price: {
+      label: '价格表',
     },
     message: {
       label: '消息-message',
@@ -131,9 +91,6 @@ export default {
           editSumbit: '保存cc',
         }
       }
-    },
-    sectionTeam: {
-      label: '大部设置',
     },
     teamPerson: {
       label: '部门员工职位',

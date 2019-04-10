@@ -4,13 +4,14 @@ import { nav, Page, VPage, Controller } from 'tonva-tools';
 import { AppUI, CApp, VTuidEdit, VTuidMain, CLink } from 'tonva-react-uq';
 import { consts } from 'home/consts';
 import {TestPage2} from './testpage2'
+import { CarouselControlProps } from 'reactstrap';
 
 const baseInfoNames : string[] = [
-  "product", "supplier", "customer", "department", "staff", "warehouse", "goodslocation"
+  "product", "供应商信息", "客户信息", "部门信息", "职员信息", "库区信息", "货位信息", "物流中心", "packtype"
 ]
 
 const sheetNames : string[] = [
-  "purchase"
+  "采购订单"
 ]
 
 class NavTuidMainPage extends VPage<CApp> {
@@ -20,6 +21,18 @@ class NavTuidMainPage extends VPage<CApp> {
       let mid = cuq.tuid(param);
       if (mid !== undefined) {
         await cuq.cTuidMain(mid).start();
+      }
+    }
+  }
+}
+
+class NavTuidEditPage extends VPage<CApp> {
+  async open(param?: any) {
+    if (param !== undefined) {
+      let cuq = this.controller.getCUq(consts.uqBasedata);
+      let mid = cuq.tuid(param);
+      if (mid !== undefined) {
+        await cuq.cTuidEdit(mid).start();
       }
     }
   }
@@ -37,15 +50,25 @@ class NavSheetPage extends VPage<CApp> {
   }
 }
 
-export const navToPage = (name : string, cApp : CSCMApp) => {
+const showOneVPage = async(cApp:Controller, vp: new (coordinator: Controller) => VPage<Controller>, param?: any): Promise<void> => {
+  await (new vp(cApp)).open(param);
+}
+
+export const navToPage = (name : string, cApp : Controller) => {
   if (baseInfoNames.includes(name)) {
-    cApp.showOneVPage(NavTuidMainPage, name);
+    showOneVPage(cApp, NavTuidMainPage, name);
   }
   else if (sheetNames.includes(name)) {
-    cApp.showOneVPage(NavSheetPage, name);
+    showOneVPage(cApp, NavSheetPage, name);
   }
   else if (name === "testAllTab")
   {
-    cApp.showOneVPage(TestPage2, "testAllTab")
+    showOneVPage(cApp, TestPage2, "testAllTab")
+  }
+}
+
+export const navToEditPage = (name : string, cApp : Controller) => {
+  if (baseInfoNames.includes(name)) {
+    showOneVPage(cApp, NavTuidEditPage, name);
   }
 }
