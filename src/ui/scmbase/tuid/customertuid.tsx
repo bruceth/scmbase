@@ -5,12 +5,11 @@ import { SearchBox, List, Muted } from 'tonva-react-form';
 import { Button } from 'reactstrap';
 import { navToPage, navToEditPage } from 'pages'
 
-export class CustomerCTuidMain extends CTuidMain {
-  protected get VTuidMain():typeof VTuidMain {return CustomerVTuidMain}
-  protected get VTuidEdit():typeof VTuidEdit {return CustomerVTuidEdit}
+export class CTuidMainCustomer extends CTuidMain {
+  protected get VTuidMain():typeof VTuidMain {return VTuidMainCustomer}
 }
 
-class CustomerVTuidMain extends VTuidMain {
+class VTuidMainCustomer extends VTuidMain {
   protected get view() {
       let {label, proxyLinks} = this.controller;
       return () => <Page header={label}>
@@ -31,20 +30,20 @@ class CustomerVTuidMain extends VTuidMain {
   }
 }
 
-export class CustomerCTuidEdit extends CTuidEdit {
-  protected get VTuidEdit():typeof VTuidEdit {return CustomerVTuidEdit}
+export class CTuidEditCustomer extends CTuidEdit {
+  protected get VTuidEdit():typeof VTuidEdit {return VTuidEditCustomer}
 
 }
 
-class CustomerVTuidEdit extends VTuidEdit {
+class VTuidEditCustomer extends VTuidEdit {
 
 }
 
-export class CustomerCTuidSelect extends CTuidSelect {
-  protected get VTuidSelect():typeof VTuidSelect {return CustomerVTuidSelect}
+export class CTuidSelectCustomer extends CTuidSelect {
+  protected get VTuidSelect():typeof VTuidSelect {return VTuidSelectCustomer}
 }
 
-class CustomerVTuidSelect extends VTuidSelect {
+class VTuidSelectCustomer extends VTuidSelect {
   onNew = async () => {
     navToEditPage('客户信息', this.controller.cUq.cApp);
   }

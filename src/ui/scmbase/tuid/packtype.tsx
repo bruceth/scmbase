@@ -5,11 +5,11 @@ import { SearchBox, List, Muted } from 'tonva-react-form';
 import { Button } from 'reactstrap';
 import { navToPage, navToEditPage } from 'pages'
 
-export class PackTypeCTuidMain extends CTuidMain {
-  protected get VTuidMain():typeof VTuidMain {return PackTypeVTuidMain}
+export class CTuidMainPackType extends CTuidMain {
+  protected get VTuidMain():typeof VTuidMain {return VTuidMainPackType}
 }
 
-export class PackTypeVTuidMain extends VTuidMain {
+class VTuidMainPackType extends VTuidMain {
   protected get view() {
       let {label, proxyLinks} = this.controller;
       return () => <Page header={label}>
@@ -30,11 +30,11 @@ export class PackTypeVTuidMain extends VTuidMain {
   }
 }
 
-export class PackTypeCTuidSelect extends CTuidSelect {
-  protected get VTuidSelect():typeof VTuidSelect {return PackTypeVTuidSelect}
+export class CTuidSelectPackType extends CTuidSelect {
+  protected get VTuidSelect():typeof VTuidSelect {return VTuidSelectPackType}
 }
 
-export class PackTypeVTuidSelect extends VTuidSelect {
+class VTuidSelectPackType extends VTuidSelect {
   onNew = async () => {
     navToEditPage('packtype', this.controller.cUq.cApp);
   }

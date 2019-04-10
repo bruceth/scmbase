@@ -3,14 +3,14 @@ import { observer } from 'mobx-react';
 import { LMR, Muted } from 'tonva-react-form';
 import { tv, TuidUI, FieldTuidUI } from 'tonva-react-uq';
 import { MyCTuid } from './myCTuid';
-import { ProductCTuidMain } from './productuid'
-import { PackTypeCTuidMain, PackTypeCTuidSelect} from './packtype'
-import { CustomerCTuidMain, CustomerCTuidSelect, CustomerCTuidEdit } from './customertuid'
+import { CTuidMainProduct } from './productuid'
+import { CTuidMainPackType, CTuidSelectPackType} from './packtype'
+import { CTuidMainCustomer, CTuidSelectCustomer, CTuidEditCustomer } from './customertuid'
 
 const customer:TuidUI = {
-    CTuidMain: CustomerCTuidMain,
-    CTuidSelect: CustomerCTuidSelect,
-    CTuidEdit: CustomerCTuidEdit,
+    CTuidMain: CTuidMainCustomer,
+    CTuidSelect: CTuidSelectCustomer,
+    CTuidEdit: CTuidEditCustomer,
     content: (values) => {
         let {id, 名称} = values;
         return <>{名称 || 'id ' + id + ' ...'}</>;
@@ -53,7 +53,7 @@ const productPackRowContent = observer((values) => {
 });
 
 const product:TuidUI = {
-    CTuidMain : ProductCTuidMain,
+    CTuidMain : CTuidMainProduct,
     content: (values) => {
         let {id, discription} = values;
         return <>{discription || 'id ' + id + ' ...'}</>;
@@ -91,8 +91,8 @@ const product:TuidUI = {
 };
 
 const packType:TuidUI = {
-    CTuidMain : PackTypeCTuidMain,
-    CTuidSelect : PackTypeCTuidSelect,
+    CTuidMain : CTuidMainPackType,
+    CTuidSelect : CTuidSelectPackType,
     content: (values) => {
         let {id, name, discription} = values;
         return <>{name || discription || 'id ' + id + ' ...'}</>;

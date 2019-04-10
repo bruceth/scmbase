@@ -5,11 +5,11 @@ import { SearchBox, List, Muted } from 'tonva-react-form';
 import { Button } from 'reactstrap';
 import { navToPage } from 'pages'
 
-export class ProductCTuidMain extends CTuidMain {
-  protected get VTuidMain():typeof VTuidMain {return ProductVTuidMain}
+export class CTuidMainProduct extends CTuidMain {
+  protected get VTuidMain():typeof VTuidMain {return VTuidMainProduct}
 }
 
-export class ProductVTuidMain extends VTuidMain {
+class VTuidMainProduct extends VTuidMain {
   onPackType = async () => {
     navToPage('packtype', this.controller.cUq.cApp);
   }
