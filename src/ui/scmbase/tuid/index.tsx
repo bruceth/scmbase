@@ -5,20 +5,21 @@ import { tv, TuidUI, FieldTuidUI } from 'tonva-react-uq';
 import { MyCTuid } from './myCTuid';
 import { CTuidMainProduct } from './productuid'
 import { CTuidMainPackType, CTuidSelectPackType} from './packtype'
-import { CTuidMainCustomer, CTuidSelectCustomer, CTuidEditCustomer } from './customertuid'
+import { CTuidMainCustomer, CTuidSelectCustomer, CTuidEditCustomer, CTuidListCustomer } from './customertuid'
 
 const customer:TuidUI = {
     CTuidMain: CTuidMainCustomer,
     CTuidSelect: CTuidSelectCustomer,
     CTuidEdit: CTuidEditCustomer,
+    CTuidList: CTuidListCustomer,
     content: (values) => {
         let {id, 名称} = values;
         return <>{名称 || 'id ' + id + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {name} = row;
+        let {名称} = row;
         let right = <Muted>{}</Muted>;
-        return <LMR className="px-3 py-2" left={name} right={right}/>
+        return <LMR className="px-3 py-2" left={名称} right={right}/>
     },
 };
 

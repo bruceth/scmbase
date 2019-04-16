@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { FA } from 'tonva-react-form';
 import { observable } from 'mobx';
-import { CTuidMain, VTuidMain, CTuidSelect, VTuidSelect, CTuidEdit, VTuidEdit, FieldCall, VForm, TuidMain, FieldTuidUI } from "tonva-react-uq";
+import { CTuidMain, VTuidMain, CTuidEdit, VTuidEdit, FieldCall, VForm, TuidMain, FieldTuidUI } from "tonva-react-uq";
+import { CTuidList, VTuidMainList, CTuidSelect, VTuidSelect} from 'tonva-react-uq'
 import { Page } from 'tonva-tools';
 import { Form, Field, UiSchema, Schema, Context, ArrSchema, UiArr, IntSchema, StringSchema, DateSchema, UiTextAreaItem, UiIdItem, ButtonSchema, UiTextItem, NumSchema, UiCustom, nav } from 'tonva-tools';
 import { SearchBox, List, Muted } from 'tonva-react-form';
@@ -144,7 +145,7 @@ class VTuidEditCustomer extends VTuidEdit {
     }
   }
 
-  @observable formData = {
+  formData = {
     id: undefined,
   }
 
@@ -157,7 +158,10 @@ class VTuidEditCustomer extends VTuidEdit {
   }
 
   async open(param?:any):Promise<void> {
-    this.openPage(this.view);
+    if (param !== undefined) {
+      this.formData = param;
+    }
+    this.openPage(this.view, param);
   }
 
   onFormButtonNextClick = async (name:string, context:Context) => {
@@ -280,4 +284,13 @@ class VTuidSelectCustomer extends VTuidSelect {
             item={{render: this.renderDivRow, onClick: this.clickDivRow}} />
     </Page>;
   }
+}
+
+export class CTuidListCustomer extends CTuidList {
+  protected get VTuidList():typeof VTuidMainList {return VTuidMainListCustomer}
+
+}
+
+export class VTuidMainListCustomer extends VTuidMainList {
+
 }
