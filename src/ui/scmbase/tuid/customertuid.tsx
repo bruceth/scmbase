@@ -157,9 +157,45 @@ class VTuidEditCustomer extends VTuidEdit {
     客户: undefined,
   }
 
+  async loadMap2():Promise<any> {
+    let mapc2 = this.controller.cUq.map("客户证照信息");
+    let qm2 = {客户:this.cid};
+    let qr2 = await mapc2.query(qm2);
+    if (qr2 !== undefined) {
+      let {ret} = qr2 as {ret:any[]};
+      if (ret && ret.length > 0){
+        let fd = ret[0];
+        fd.客户 = this.cid;
+        this.formData2 = fd;
+      }
+    }
+  }
+
+  async loadMap3():Promise<any> {
+    let mapc3 = this.controller.cUq.map("客户财务信息");
+    let qm3 = {客户:this.cid};
+    let qr3 = await mapc3.query(qm3);
+    if (qr3 !== undefined) {
+      let {ret} = qr3 as {ret:any[]};
+      if (ret && ret.length > 0){
+        let fd = ret[0];
+        fd.客户 = this.cid;
+        this.formData3 = fd;
+      }
+    }
+  }
+
   async open(param?:any):Promise<void> {
     if (param !== undefined) {
       this.formData = param;
+
+      this.cid = this.formData.id;
+      this.formData2.客户 = this.cid;
+      this.formData3.客户 = this.cid;
+      let promises:PromiseLike<any>[] = [];
+      promises.push(this.loadMap2());
+      promises.push(this.loadMap3());
+      await Promise.all(promises);
     }
     this.openPage(this.view, param);
   }
