@@ -12,11 +12,11 @@ import { UiItem } from 'tonva-tools/ui/form/uiSchema';
 import { RowContent } from 'tonva-react-uq/controllers/form/viewModel';
 import { observer } from 'mobx-react';
 
-export class CTuidMainCustomer extends CTuidMain {
-  protected get VTuidMain():typeof VTuidMain {return VTuidMainCustomer}
+export class CTuidMainSupplier extends CTuidMain {
+  protected get VTuidMain():typeof VTuidMain {return VTuidMainSupplier}
 }
 
-class VTuidMainCustomer extends VTuidMain {
+class VTuidMainSupplier extends VTuidMain {
   protected get view() {
       let {label, proxyLinks} = this.controller;
       return () => <Page header={label}>
@@ -37,58 +37,58 @@ class VTuidMainCustomer extends VTuidMain {
   }
 }
 
-export class CTuidEditCustomer extends CTuidEdit {
-  protected get VTuidEdit():typeof VTuidEdit {return VTuidEditCustomer}
+export class CTuidEditSupplier extends CTuidEdit {
+  protected get VTuidEdit():typeof VTuidEdit {return VTuidEditSupplier}
 
 }
 
-const schemaCustomer : Schema = [
+const schemaSupplier : Schema = [
   {name: 'id', type: 'id', required: false},
   {name: '名称', type: 'string', required: true, maxLength: 100} as StringSchema,
-  {name: '客户编号', type: 'string', required: true, maxLength: 100} as StringSchema,
+  {name: '供应商编号', type: 'string', required: true, maxLength: 100} as StringSchema,
   {name: '查询码', type: 'string', required: false, maxLength: 100} as StringSchema,
   {name: '法人代表', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '收货地址', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '调拨类型', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '运输方式', type: 'string', maxLength: 100} as StringSchema,
+  {name: '注册地址', type: 'string', required: false, maxLength: 100} as StringSchema,
+  {name: '退货地址', type: 'string', required: false, maxLength: 100} as StringSchema,
+  {name: '企业性质', type: 'string', maxLength: 100} as StringSchema,
   {name: '联系人', type: 'string', maxLength: 100} as StringSchema,
   {name: 'submit', type: 'submit'}
 ];
 
-const schemaCustomer2 : Schema = [
-  {name: '客户', type: 'id', required: false},
+const schemaSupplier2 : Schema = [
+  {name: '供应商', type: 'id', required: false},
   {name: '图片', type: 'string', required: true, maxLength: 100} as StringSchema,
   {name: '企业类型', type: 'string', required: true, maxLength: 100} as StringSchema,
   {name: '许可证号', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '发证日期', type: 'date', required: false } as DateSchema,
-  {name: '有效期至', type: 'date', required: false} as DateSchema,
+  {name: '许可证发证日期', type: 'date', required: false } as DateSchema,
+  {name: '许可证有效期至', type: 'date', required: false} as DateSchema,
   {name: '经营范围', type: 'string', required: false, maxLength: 100} as StringSchema,
   {name: '范围显示', type: 'string', maxLength: 100} as StringSchema,
-  {name: '营业执照', type: 'string', maxLength: 100} as StringSchema,
+  {name: '营业执照号', type: 'string', maxLength: 100} as StringSchema,
   {name: '营业执照发证日期', type: 'date'} as DateSchema,
   {name: '营业执照有效期至', type: 'date'} as DateSchema,
   {name: '营业执照年检证明', type: 'string', maxLength: 100} as StringSchema,
   {name: '组织机构代码证号', type: 'string', maxLength: 100} as StringSchema,
-  {name: '代码证发证日期', type: 'date'} as DateSchema,
-  {name: '代码证有效期至', type: 'date'} as DateSchema,
-  {name: '代码证年检证明', type: 'string', maxLength: 100} as StringSchema,
-  {name: 'GMP', type: 'string', maxLength: 100} as StringSchema,
-  {name: 'GMP发证日期', type: 'date'} as DateSchema,
+  {name: '组织代码发证日期', type: 'date'} as DateSchema,
+  {name: '组织代码有效期至', type: 'date'} as DateSchema,
+  {name: '组织代码年检证明', type: 'string', maxLength: 100} as StringSchema,
+  {name: '税务登记证号', type: 'string', maxLength: 100} as StringSchema,
+  {name: '税务登记证发证日期', type: 'date'} as DateSchema,
   {name: 'submit', type: 'submit'}
 ];
 
-const schemaCustomer3 : Schema = [
-  {name: '客户', type: 'id', required: false},
-  {name: '税号', type: 'string', required: true, maxLength: 100} as StringSchema,
-  {name: '开户行', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '账号', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '记账方式', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '换票方式', type: 'string', maxLength: 100} as StringSchema,
-  {name: '换票类型', type: 'string', maxLength: 100} as StringSchema,
+const schemaSupplier3 : Schema = [
+  {name: '供应商', type: 'id', required: false},
+  {name: '认证', type: 'string', required: true, maxLength: 100} as StringSchema,
+  {name: '证书号', type: 'string', required: false, maxLength: 100} as StringSchema,
+  {name: '发证日期', type: 'date'} as DateSchema,
+  {name: '证书有效期启', type: 'date'} as DateSchema,
+  {name: '证书有效期至', type: 'date'} as DateSchema,
+  {name: '认证范围', type: 'string', maxLength: 100} as StringSchema,
   {name: 'submit', type: 'submit'}
 ];
 
-class VTuidEditCustomer extends VTuidEdit {
+class VTuidEditSupplier extends VTuidEdit {
   private form2: Form;
   private form3: Form;
   private cid: number;
@@ -97,12 +97,12 @@ class VTuidEditCustomer extends VTuidEdit {
     items : {
       id: { widget: 'id', visible: false } as UiIdItem,
       名称: { widget: 'text'} as UiTextItem,
-      客户编号: { widget: 'text'} as UiTextItem,
+      供应商编号: { widget: 'text'} as UiTextItem,
       查询码: { widget: 'text'} as UiTextItem,
       法人代表: { widget: 'text'} as UiTextItem,
-      收货地址: { widget: 'text'} as UiTextItem,
-      调拨类型: { widget: 'text'} as UiTextItem,
-      运输方式: { widget: 'text'} as UiTextItem,
+      注册地址: { widget: 'text'} as UiTextItem,
+      退货地址: { widget: 'text'} as UiTextItem,
+      企业性质: { widget: 'text'} as UiTextItem,
       联系人: { widget: 'text'} as UiTextItem,
       submit: {widget: 'button', className: 'btn btn-primary', Templet: <><i className="fa" />&nbsp;下一步&nbsp;</>},
     }
@@ -110,39 +110,37 @@ class VTuidEditCustomer extends VTuidEdit {
 
   protected uiSchema2 : UiSchema = {
     items : {
-      客户: { widget: 'id', visible: false } as UiIdItem,
+      供应商: { widget: 'id', visible: false } as UiIdItem,
       图片: { widget: 'text'} as UiTextItem,
       企业类型: { widget: 'text'} as UiTextItem,
       许可证号: { widget: 'text'} as UiTextItem,
-      发证日期: { widget: 'date'} as UiItem,
-      有效期至: { widget: 'date'} as UiItem,
+      许可证发证日期: { widget: 'date', label: '发证日期'} as UiItem,
+      许可证有效期至: { widget: 'date', label: '有效期至'} as UiItem,
       经营范围: { widget: 'text'} as UiTextItem,
       范围显示: { widget: 'text'} as UiTextItem,
-      营业执照: { widget: 'text'} as UiTextItem,
+      营业执照号: { widget: 'text'} as UiTextItem,
       营业执照发证日期: { widget: 'date', label: '发证日期'} as UiItem,
       营业执照有效期至: { widget: 'date', label: '有效期至'} as UiItem,
       营业执照年检证明: { widget: 'text'} as UiTextItem,
       组织机构代码证号: { widget: 'text'} as UiTextItem,
-      代码证发证日期: { widget: 'date', label: '发证日期'} as UiItem,
-      代码证有效期至: { widget: 'date', label: '有效期至'} as UiItem,
-      代码证年检证明: { widget: 'text'} as UiTextItem,
-      GMP: { widget: 'text'} as UiTextItem,
-      GMP发证日期: { widget: 'date', label: '发证日期'} as UiItem,
-      prev: {widget: 'button', className: 'btn', Templet: <><i className="fa" />&nbsp;上一步&nbsp;</>},
+      组织代码发证日期: { widget: 'date', label: '发证日期'} as UiItem,
+      组织代码有效期至: { widget: 'date', label: '有效期至'} as UiItem,
+      组织代码年检证明: { widget: 'text'} as UiTextItem,
+      税务登记证号: { widget: 'text'} as UiTextItem,
+      税务登记证发证日期: { widget: 'date', label: '发证日期'} as UiItem,
       submit: {widget: 'button', className: 'btn btn-primary', Templet: <><i className="fa" />&nbsp;下一步&nbsp;</>},
     }
   }
 
   protected uiSchema3 : UiSchema = {
     items : {
-      客户: { widget: 'id', visible: false } as UiIdItem,
-      税号: { widget: 'text'} as UiTextItem,
-      开户行: { widget: 'text'} as UiTextItem,
-      账号: { widget: 'text'} as UiTextItem,
-      记账方式: { widget: 'text'} as UiTextItem,
-      换票方式: { widget: 'text'} as UiTextItem,
-      换票类型: { widget: 'text'} as UiTextItem,
-      prev: {widget: 'button', className: 'btn', Templet: <><i className="fa" />&nbsp;上一步&nbsp;</>},
+      供应商: { widget: 'id', visible: false } as UiIdItem,
+      认证: { widget: 'text'} as UiTextItem,
+      证书号: { widget: 'text'} as UiTextItem,
+      发证日期: { widget: 'date', label: '发证日期'} as UiItem,
+      证书有效期启: { widget: 'date', label: '有效期启'} as UiItem,
+      证书有效期至: { widget: 'date', label: '有效期至'} as UiItem,
+      认证范围: { widget: 'text'} as UiTextItem,
       submit: {widget: 'button', className: 'btn btn-primary', Templet: <><i className="fa" />&nbsp;下一步&nbsp;</>},
     }
   }
@@ -152,36 +150,36 @@ class VTuidEditCustomer extends VTuidEdit {
   }
 
   formData2 = {
-    客户: undefined,
+    供应商: undefined,
   }
 
   formData3 = {
-    客户: undefined,
+    供应商: undefined,
   }
 
   async loadMap2():Promise<any> {
-    let mapc2 = this.controller.cUq.map("客户证照信息");
-    let qm2 = {客户:this.cid};
+    let mapc2 = this.controller.cUq.map("供应商证照信息");
+    let qm2 = {供应商:this.cid};
     let qr2 = await mapc2.query(qm2);
     if (qr2 !== undefined) {
       let {ret} = qr2 as {ret:any[]};
       if (ret && ret.length > 0){
         let fd = ret[0];
-        fd.客户 = this.cid;
+        fd.供应商 = this.cid;
         this.formData2 = fd;
       }
     }
   }
 
   async loadMap3():Promise<any> {
-    let mapc3 = this.controller.cUq.map("客户财务信息");
-    let qm3 = {客户:this.cid};
+    let mapc3 = this.controller.cUq.map("供应商认证信息");
+    let qm3 = {供应商:this.cid};
     let qr3 = await mapc3.query(qm3);
     if (qr3 !== undefined) {
       let {ret} = qr3 as {ret:any[]};
       if (ret && ret.length > 0){
         let fd = ret[0];
-        fd.客户 = this.cid;
+        fd.供应商 = this.cid;
         this.formData3 = fd;
       }
     }
@@ -192,8 +190,8 @@ class VTuidEditCustomer extends VTuidEdit {
       this.formData = param;
 
       this.cid = this.formData.id;
-      this.formData2.客户 = this.cid;
-      this.formData3.客户 = this.cid;
+      this.formData2.供应商 = this.cid;
+      this.formData3.供应商 = this.cid;
       let promises:PromiseLike<any>[] = [];
       promises.push(this.loadMap2());
       promises.push(this.loadMap3());
@@ -228,15 +226,15 @@ class VTuidEditCustomer extends VTuidEdit {
     if (name === 'submit') {
       this.formData3 = context.data;
       this.cid = this.formData.id;
-      let mapc2 = this.controller.cUq.map("客户证照信息");
-      let mapc3 = this.controller.cUq.map("客户财务信息");
+      let mapc2 = this.controller.cUq.map("供应商证照信息");
+      let mapc3 = this.controller.cUq.map("供应商认证信息");
       let ret = await this.controller.entity.save(this.cid, this.formData);
       let {id} = ret;
       if (id < 0) {
         return;
       }
-      this.formData2.客户 = id;
-      this.formData3.客户 = id;
+      this.formData2.供应商 = id;
+      this.formData3.供应商 = id;
       let promises:PromiseLike<any>[] = [];
       promises.push(mapc2.add(this.formData2));
       promises.push(mapc3.add(this.formData3));
@@ -258,9 +256,9 @@ class VTuidEditCustomer extends VTuidEdit {
   reset() {
     this.formData = { id: undefined }
   
-    this.formData2 = { 客户: undefined }
+    this.formData2 = { 供应商: undefined }
   
-    this.formData3 = { 客户: undefined }
+    this.formData3 = { 供应商: undefined }
   }
 
   protected next = async () => {
@@ -276,7 +274,7 @@ class VTuidEditCustomer extends VTuidEdit {
   protected get view() {
     let {label} = this.controller;
     return () => <Page header={label}>
-      <Form className="p-3" schema={schemaCustomer} uiSchema={this.uiSchema} formData={this.formData}
+      <Form className="p-3" schema={schemaSupplier} uiSchema={this.uiSchema} formData={this.formData}
         fieldLabelSize={2}
         onButtonClick={this.onFormButtonNextClick}
       />
@@ -286,7 +284,7 @@ class VTuidEditCustomer extends VTuidEdit {
   protected get view2() {
     let {label} = this.controller;
     return () => <Page header={label}>
-      <Form ref={v => this.form2 = v} className="p-3" schema={schemaCustomer2} uiSchema={this.uiSchema2} formData={this.formData2}
+      <Form ref={v => this.form2 = v} className="p-3" schema={schemaSupplier2} uiSchema={this.uiSchema2} formData={this.formData2}
         fieldLabelSize={2}
         onButtonClick={this.onFormButtonNextClick2}
       />
@@ -296,7 +294,7 @@ class VTuidEditCustomer extends VTuidEdit {
   protected get view3() {
     let {label} = this.controller;
     return () => <Page header={label}>
-      <Form ref={v => this.form3 = v} className="p-3" schema={schemaCustomer3} uiSchema={this.uiSchema3} formData={this.formData3}
+      <Form ref={v => this.form3 = v} className="p-3" schema={schemaSupplier3} uiSchema={this.uiSchema3} formData={this.formData3}
         fieldLabelSize={2}
         onButtonClick={this.onFormButtonNextClick3}
       />
@@ -304,21 +302,21 @@ class VTuidEditCustomer extends VTuidEdit {
   }
 }
 
-export class CTuidSelectCustomer extends CTuidSelect {
-  protected get VTuidSelect():typeof VTuidSelect {return VTuidSelectCustomer}
+export class CTuidSelectSupplier extends CTuidSelect {
+  protected get VTuidSelect():typeof VTuidSelect {return VTuidSelectSupplier}
 
 }
 
-class VTuidSelectCustomer extends VTuidSelect {
+class VTuidSelectSupplier extends VTuidSelect {
   onNew = async () => {
-    navToEditPage('客户信息', this.controller.cUq.cApp);
+    navToEditPage('供应商信息', this.controller.cUq.cApp);
   }
 
   async open(param?:any): Promise<void> {
     await this.showM(param);
   }
 
-  protected async showM(param) {
+  protected async showM(param?:any) {
     this.mainRowContent = this.ui.rowContent || RowContent;
     await this.controller.searchMain('');
     this.openPage(this.mainView);
@@ -334,7 +332,7 @@ class VTuidSelectCustomer extends VTuidSelect {
     let header = <SearchBox className="mx-1 w-100"
       initKey={''}
       onSearch={this.onSearchMain} placeholder={'搜索'+this.label} />;
-    return <Page header="选择客户" right={rbutton} back="close">
+    return <Page header="选择供应商" right={rbutton} back="close">
       {header}
       <List
         items={this.controller.PageItems.items}
@@ -345,7 +343,7 @@ class VTuidSelectCustomer extends VTuidSelect {
 
   protected divView = (param:any) => {
     let rbutton = <Button className="ml-2" color="primary" onClick={this.onNew}>新增</Button>;
-    return <Page header="选择客户" right={rbutton}>
+    return <Page header="选择供应商" right={rbutton}>
         <List
             items={param.items}
             item={{render: this.renderDivRow, onClick: this.clickDivRow}} />
@@ -353,11 +351,11 @@ class VTuidSelectCustomer extends VTuidSelect {
   }
 }
 
-export class CTuidListCustomer extends CTuidList {
-  protected get VTuidList():typeof VTuidMainList {return VTuidMainListCustomer}
+export class CTuidListSupplier extends CTuidList {
+  protected get VTuidList():typeof VTuidMainList {return VTuidMainListSupplier}
 
 }
 
-export class VTuidMainListCustomer extends VTuidMainList {
+export class VTuidMainListSupplier extends VTuidMainList {
 
 }

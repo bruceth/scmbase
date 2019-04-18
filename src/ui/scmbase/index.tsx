@@ -1,5 +1,4 @@
 import { UqUI } from 'tonva-react-uq';
-//import res from './res';
 import tuid from './tuid';
 import res from './res';
 //import sheet from './sheet';
