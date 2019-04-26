@@ -16,6 +16,7 @@ export default {
     },
     c: () => <span className="text-danger">ccc</span>,
   },
+  none: "无",
   usq: 'scmbasedata',
   tuid: '基础档案',
   map: '对照表',

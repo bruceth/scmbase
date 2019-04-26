@@ -169,7 +169,7 @@ export abstract class Entity {
             default: return d;
             case 'object':
                 let tuid = field._tuid;
-                if (tuid === undefined) return d.id;
+                if (tuid === undefined) return d && d.id;
                 return tuid.getIdFromObj(d);
             case 'string':
                 let len = d.length;

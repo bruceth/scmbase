@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { LMR, Muted } from 'tonva-react-form';
 import { tv, TuidUI, FieldTuidUI } from 'tonva-react-uq';
-import { CTuidMainProduct, CTuidEditProduct, CTuidSelectProduct } from './productuid'
+import { CTuidMainProduct, CTuidEditProduct, CTuidSelectProduct, CTuidListProduct } from './productuid'
 import { CTuidMainPackType, CTuidSelectPackType} from './packtype'
 import { CTuidMainCustomer, CTuidSelectCustomer, CTuidEditCustomer, CTuidListCustomer } from './customertuid'
 import { CTuidMainSupplier, CTuidSelectSupplier, CTuidEditSupplier, CTuidListSupplier } from './suppllier'
@@ -34,6 +34,7 @@ const product:TuidUI = {
     CTuidMain: CTuidMainProduct,
     CTuidEdit: CTuidEditProduct,
     CTuidSelect: CTuidSelectProduct,
+    CTuidList: CTuidListProduct,
     content: (values) => {
         let {id, discription} = values;
         return <>{discription || 'id ' + id + ' ...'}</>;

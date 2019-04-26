@@ -52,7 +52,7 @@ export class VTuidField extends VField {
         }
         let content;
         if (this.value === null)
-            content = <>{placeHolder || this.input.placeHolder}</>;
+            content = <>{placeHolder || (this.input && this.input.placeHolder)}</>;
         else if (typeof this.value === 'object') {
             content = tv(this.value);
         }

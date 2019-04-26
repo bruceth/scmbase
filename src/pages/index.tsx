@@ -7,11 +7,12 @@ import {TestPage2} from './testpage2'
 import { CarouselControlProps } from 'reactstrap';
 
 const baseInfoNames : string[] = [
-  "product", "供应商信息", "客户信息", "部门信息", "职员信息", "库区信息", "货位信息", "物流中心", "packtype"
+  "product", "packtype", "供应商信息", "客户信息", "部门信息", "职员信息", "库区信息",
+   "货位信息", "物流中心", "生产厂商"
 ]
 
 const sheetNames : string[] = [
-  "采购订单"
+  "采购订单", "采购收货"
 ]
 
 class NavTuidMainPage extends VPage<CApp> {
