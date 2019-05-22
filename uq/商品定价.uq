@@ -1,0 +1,13 @@
+-- SHEET 商品定价 ver 0.6 (
+--     supplier ID Supplier not null,
+--     ARR products (
+--         product ID Product not null,
+--         pack OF product.Pack not null,
+--         price dec(12,2) not null,
+--         quantity int not null,
+--         amount dec(12,2) not null,
+--     )
+-- )
+-- Action submit {
+--     STATE TO END;
+-- }

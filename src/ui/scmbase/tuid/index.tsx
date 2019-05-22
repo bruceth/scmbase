@@ -151,10 +151,10 @@ const staff:TuidUI = {
         return <>{名称 || 'id ' + id + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {名称, id} = row;
+        let {编码, id} = row;
         let right = <Muted>{}</Muted>;
         let mid = <>{'id ' + id}</>;
-        return <LMR className="px-3 py-2" left={名称} right={mid}/>
+        return <LMR className="px-3 py-2" left={编码} right={mid}/>
     },
 }
 

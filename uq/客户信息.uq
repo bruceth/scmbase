@@ -1,0 +1,49 @@
+TUID 客户信息 ver 0.1 (
+  id,
+  main 名称 char(200) not null,
+  客户编号 char(100) not null,
+  查询码 char(100),
+  法人代表 char(100),
+  收货地址 char(200),
+  调拨类型 char(200),
+  运输方式 char(50),
+  联系人 char(100),
+  search (名称),
+  unique (名称),
+);
+
+MAP 客户状态 ver 0.2 (
+  key 客户 ID 客户信息 not null,
+  usable tinyint
+);
+
+MAP 客户证照信息 ver 0.2 (
+  key 客户 ID 客户信息 not null,
+  图片 char(100) not null,
+  企业类型 char(100) not null,
+  许可证号 char(100),
+  发证日期 date,
+  有效期至 date,
+  经营范围 char(100),
+  范围显示 char(100),
+  营业执照 char(100),
+  营业执照发证日期 date,
+  营业执照有效期至 date,
+  营业执照年检证明 char(100),
+  组织机构代码证号 char(100),
+  代码证发证日期 date,
+  代码证有效期至 date,
+  代码证年检证明 char(100),
+  GMP char(100),
+  GMP发证日期 date,
+);
+
+MAP 客户财务信息 ver 0.2 (
+  key 客户 ID 客户信息 not null,
+  税号 char(100) not null,
+  开户行 char(100),
+  账号 char(100),
+  记账方式 char(100),
+  换票方式 char(100),
+  换票类型 char(100)
+);

@@ -1,0 +1,27 @@
+SHEET 采购收货 ver 0.6 (
+    供货者 ID 供应商信息 not null,
+    公司机构 char(200),
+    合同单号 char(100),
+    日期 date,
+    物流中心 ID 物流中心,
+    送货人 char(200),
+    是否空入 char(10),
+    单号 char(100), 
+    ARR products (
+        product ID Product not null,
+        价格 dec(12,2) not null,
+        数量 dec(12,2) not null,
+        金额 dec(12,2) not null,
+    ),
+)
+Action submit {
+    STATE TO END;
+}
+--STATE deliver {
+--    ACTION finish {
+--        table t(a int);
+--        into t select 1 as a;
+--        STATE TO END;
+--    }
+--}
+;

@@ -1,0 +1,44 @@
+SHEET 采购订单 ver 0.6 (
+    供货者 ID 供应商信息 not null,
+    委托人 char(100),
+    采购员 ID 职员信息,
+    签订日期 date,
+    预付金额 dec(12,2),
+    合同号 char(100),
+    支付方式 char(100),
+    付款方式 char(100),
+    金额合计 dec(12,2),
+    实付金额 dec(12,2),
+    发票类型 char(100),
+    交货时间 date,
+    生产经营范围 char(100),
+    ARR products (
+        product ID Product not null,
+        价格 dec(12,2) not null,
+        数量 dec(12,2) not null,
+        金额 dec(12,2) not null,
+    ),
+    承运单位 char(100),
+    运输方式 char(100),
+    承运方式 char(100),
+    发货地点 char(100),
+    启运时间 date,
+    到货时间 date
+)
+Action submit {
+    STATE TO END;
+}
+--STATE deliver {
+--    ACTION finish {
+--        table t(a int);
+--        into t select 1 as a;
+--        STATE TO END;
+--    }
+--}
+;
+
+HISTORY hist (
+    date,
+    key k1 ID Product,
+    e1 int,
+);

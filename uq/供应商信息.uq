@@ -1,0 +1,48 @@
+TUID 供应商信息 ver 0.1 (
+    id,
+    main 名称 char(200) not null,
+    供应商编号 char(100) not null,
+    查询码 char(100),
+    法人代表 char(100),
+    注册地址 char(200),
+    退货地址 char(200),
+    企业性质 char(50),
+    联系人 char(100),
+    unique (名称),
+);
+
+MAP 供应商证照信息 (
+    key 供应商 ID 供应商信息 not null,
+    图片 char(100) not null,
+    企业类型 char(100) not null,
+    许可证号 char(100),
+    许可证发证日期 date,
+    许可证有效期至 date,
+    经营范围 char(100),
+    范围显示 char(100),
+    营业执照号 char(100),
+    营业执照发证日期 date,
+    营业执照有效期至 date,
+    营业执照年检证明 char(100),
+    组织机构代码证号 char(100),
+    组织代码发证日期 date,
+    组织代码有效期至 date,
+    组织代码年检证明 char(100),
+    税务登记证号 char(100),
+    税务登记证发证日期 date
+);
+
+MAP 供应商认证信息 (
+    key 供应商 ID 供应商信息 not null,
+    认证 char(100),
+    证书号 char(100),
+    发证日期 date,
+    证书有效期启 date,
+    证书有效期至 date,
+    认证范围 char(100)
+);
+
+MAP 供应商状态 ver 0.2 (
+    key 供应商 ID 供应商信息 not null,
+    usable tinyint
+);

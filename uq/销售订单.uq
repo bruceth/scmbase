@@ -1,0 +1,25 @@
+SHEET 销售订单 ver 0.6 (
+    客商 ID 客户信息 not null,
+    销售员 ID 职员信息,
+    ARR 商品 (
+        product ID Product not null,
+        单价 dec(12,2) not null,
+        数量 dec(12,2) not null,
+        金额 dec(12,2) not null,
+    ),
+    结算客商 ID 客户信息,
+    考核价加点 dec(12,2),
+    加点后价格 dec(12,2),
+    收货客商 ID 客户信息,
+    收货地址 char(100),
+    运输方式 char(100),
+    记账方式 char(100),
+    换票类型 char(100),
+    客户备注 char(100),
+    参考客商 ID 客户信息,
+    公司机构 char(100),
+    调货人 char(100),
+)
+Action submit {
+    STATE TO END;
+}

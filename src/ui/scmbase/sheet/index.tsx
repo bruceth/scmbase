@@ -11,5 +11,5 @@ const purchase: SheetUI = {
 }
 
 export default {
-  采购订单: purchase,
+  //采购订单: purchase,
 }

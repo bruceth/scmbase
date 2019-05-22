@@ -1,0 +1,10 @@
+TUID 部门信息 ver 0.1 (
+  id,
+  main 编码 char(200) not null,
+  名称 char(100) not null,
+  查询码 char(100),
+  机构名称 char(100),
+  备注 char(200),
+  unique (编码),
+  search(编码,名称)
+);

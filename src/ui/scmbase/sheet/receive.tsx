@@ -10,10 +10,10 @@ import { CSheet, VSheetMain, VSheetNew } from "tonva-react-uq";
 import { Form, Field, UiSchema, Schema, UiItem, Context, ArrSchema, UiArr, IntSchema, StringSchema, DateSchema, UiTextAreaItem, UiIdItem, ButtonSchema, UiTextItem, NumSchema, UiCustom, nav } from 'tonva-tools';
 import { NumberWidget } from 'tonva-tools/ui/form/widgets';
 
-export class CSheetPurchase extends CSheet {
+export class CSheetReceive extends CSheet {
 }
 
-export class VSheetMainPurchase extends VEntity<Sheet, SheetUI, CSheetPurchase> {
+export class VSheetMainReceive extends VEntity<Sheet, SheetUI, CSheetReceive> {
   async open() {
     this.openPage(this.view);
   }
@@ -55,24 +55,13 @@ export class VSheetMainPurchase extends VEntity<Sheet, SheetUI, CSheetPurchase> 
 
 const schemaPurchase : Schema = [
   {name: '供货者', type: 'id', required: true},
-  {name: '委托人', type: 'string', required: true, maxLength: 100} as StringSchema,
-  {name: '采购员', type: 'id', required: false},
-  {name: '签订日期', type: 'date', required: false} as DateSchema,
-  {name: '预付金额', type: 'number', required: false},
-  {name: '合同号', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '支付方式', type: 'string', required: false, maxLength: 100} as StringSchema,
-  {name: '付款方式', type: 'string', maxLength: 100} as StringSchema,
-  {name: '金额合计', type: 'number'},
-  {name: '实付金额', type: 'number'},
-  {name: '发票类型', type: 'string', maxLength: 100} as StringSchema,
-  {name: '交货时间', type: 'date', required: false} as DateSchema,
-  {name: '生产经营范围', type: 'string', maxLength: 100} as StringSchema,
-  {name: '承运单位', type: 'string', maxLength: 100} as StringSchema,
-  {name: '运输方式', type: 'string', maxLength: 100} as StringSchema,
-  {name: '承运方式', type: 'string', maxLength: 100} as StringSchema,
-  {name: '发货地点', type: 'string', maxLength: 100} as StringSchema,
-  {name: '启运时间', type: 'date', required: false} as DateSchema,
-  {name: '到货时间', type: 'date', required: false} as DateSchema,
+  {name: '公司机构', type: 'string', required: true, maxLength: 100} as StringSchema,
+  {name: '合同单号', type: 'string', required: false, maxLength: 100} as StringSchema,
+  {name: '日期', type: 'date', required: false} as DateSchema,
+  {name: '物流中心', type: 'id', required: true},
+  {name: '送货人', type: 'string', required: false, maxLength: 100} as StringSchema,
+  {name: '是否空入', type: 'string', maxLength: 10} as StringSchema,
+  {name: '单号', type: 'string', required: false, maxLength: 100} as StringSchema,
   {
     name: 'products',
     type: 'arr',
@@ -86,7 +75,7 @@ const schemaPurchase : Schema = [
   {name: 'submit', type: 'submit'},
 ];
 
-export class VSheetNewPurchase extends VEntity<Sheet, SheetUI, CSheetPurchase> {
+export class VSheetNewReceive extends VEntity<Sheet, SheetUI, CSheetReceive> {
   vForm: VForm;
   formData = {
   }
@@ -102,12 +91,9 @@ export class VSheetNewPurchase extends VEntity<Sheet, SheetUI, CSheetPurchase> {
   protected uiSchema : UiSchema = {
     items : {
       供货者: { widget: 'id'} as UiIdItem,
-      委托人: { widget: 'text'} as UiTextItem,
-      采购员: { widget: 'id'} as UiIdItem,
-      签订日期: { widget: 'date'} as UiItem,
-      预付金额: { widget: 'text'} as UiTextItem,
-      合同号: { widget: 'text'} as UiTextItem,
-      支付方式: { widget: 'text'} as UiTextItem,
+      公司机构: { widget: 'text'} as UiTextItem,
+      合同单号: { widget: 'text'} as UiTextItem,
+      日期: { widget: 'text'} as UiTextItem,
       付款方式: { widget: 'text'} as UiTextItem,
       金额合计: { widget: 'text'} as UiTextItem,
       实付金额: { widget: 'text'} as UiTextItem,

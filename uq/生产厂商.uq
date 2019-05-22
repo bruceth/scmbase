@@ -1,0 +1,5 @@
+TUID 生产厂商 ver 0.1 (
+    id,
+    main 名称 char(200) not null,
+    unique (名称),
+);

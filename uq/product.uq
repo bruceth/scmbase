@@ -1,0 +1,49 @@
+-- tuid类型定义之后的un 表示字段可以按语言录入，可以中文，可以繁体，可以英文，zh-CN，en-US, en-CA
+TUID Product ver 0.1 (
+    id,
+    main discription char(200) un not null,
+    商品编号 char(100),
+    查询码 char(100),
+    通用名称 char(200),
+    生产厂商 ID 生产厂商,
+    商品分类 char(40),
+    生产日期 date,
+    有效期 date,
+    search (discription),
+    unique (discription),
+);
+
+MAP ProductInfo ver 0.2 (
+    key product ID Product not null,
+    图片 char(200),
+    商品条形码 char(100),
+    规格型号 char(100),
+    单位 char(100),
+    计量单位类型 char(100),
+    中包装 char(20),
+    默认包装 char(20),
+    件长 char(50),
+    件宽 char(50),
+    件高 char(50),
+    堆码层数极限 int,
+    小包装长 char(50),
+    小包装宽 char(50),
+    小包装高 char(50),
+    上架拆中包装 char(2),
+    单位体积 char(50)
+);
+
+MAP ProductPrice ver 0.2 (
+    key product ID Product not null,
+    零售价 dec(10,2) not null,
+    批发价 dec(10,2),
+    税率 dec(10,2),
+    销项税率 dec(10,2),
+    折扣分类 char(20),
+    折扣率 dec(10, 2)
+);
+
+MAP ProductState ver 0.2 (
+    key product ID Product not null,
+    usable tinyint
+);
