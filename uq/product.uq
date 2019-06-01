@@ -1,16 +1,16 @@
 -- tuid类型定义之后的un 表示字段可以按语言录入，可以中文，可以繁体，可以英文，zh-CN，en-US, en-CA
 TUID Product ver 0.1 (
     id,
-    main discription char(200) un not null,
-    商品编号 char(100),
+    main 名称 char(200) un not null,
+    main 编码 char(100),
     查询码 char(100),
     通用名称 char(200),
     生产厂商 ID 生产厂商,
     商品分类 char(40),
     生产日期 date,
     有效期 date,
-    search (discription),
-    unique (discription),
+    search (名称),
+    unique (名称),
 );
 
 MAP ProductInfo ver 0.2 (

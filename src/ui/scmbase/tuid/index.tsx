@@ -36,16 +36,17 @@ const product:TuidUI = {
     CTuidSelect: CTuidSelectProduct,
     CTuidList: CTuidListProduct,
     content: (values) => {
-        let {id, discription} = values;
-        return <>{discription || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ...'}</>;
     },
     rowContent: observer((row):JSX.Element => {
-        let {discription, packType} = row;
+        let {id, 名称, 编码, packType} = row;
         let right;
+        let mid = 'id ' + id;
         if (packType && packType.content) {
             right = <Muted>{tv(packType)}</Muted>;
         }
-        return <LMR className="px-3 py-2" left={discription} right={right}/>
+        return <LMR className="px-3 py-2" left={名称 + ' ' + 编码} right={mid}/>
     }),
     divs: {
         packtype: {
@@ -104,13 +105,13 @@ const customer:TuidUI = {
     CTuidEdit: CTuidEditCustomer,
     CTuidList: CTuidListCustomer,
     content: (values) => {
-        let {id, 名称} = values;
-        return <>{名称 || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ' + 编码 + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {名称} = row;
-        let right = <Muted>{}</Muted>;
-        return <LMR className="px-3 py-2" left={名称} right={right}/>
+        let {id, 名称, 编码} = row;
+        let right = <Muted>{'id ' + id}</Muted>;
+        return <LMR className="px-3 py-2" left={名称 + ' ' + 编码} right={right}/>
     },
 };
 
@@ -120,13 +121,13 @@ const supplier:TuidUI = {
     CTuidEdit: CTuidEditSupplier,
     CTuidList: CTuidListSupplier,
     content: (values) => {
-        let {id, 名称} = values;
-        return <>{名称 || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ' + 编码 + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {名称} = row;
-        let right = <Muted>{}</Muted>;
-        return <LMR className="px-3 py-2" left={名称} right={right}/>
+        let {id, 名称, 编码} = row;
+        let right = <Muted>{'id ' + id}</Muted>;
+        return <LMR className="px-3 py-2" left={名称+ ' ' + 编码} right={right}/>
     },
 };
 
@@ -147,70 +148,70 @@ const manufactor:TuidUI = {
 const staff:TuidUI = {
     CTuidSelect: CTuidSelectStaff,
     content: (values) => {
-        let {id, 名称} = values;
-        return <>{名称 || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ' + 编码 + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {编码, id} = row;
+        let {名称, 编码, id} = row;
         let right = <Muted>{}</Muted>;
         let mid = <>{'id ' + id}</>;
-        return <LMR className="px-3 py-2" left={编码} right={mid}/>
+        return <LMR className="px-3 py-2" left={名称 + ' ' + 编码} right={mid}/>
     },
 }
 
 const department:TuidUI = {
     CTuidSelect: CTuidSelectDepartment,
     content: (values) => {
-        let {id, 名称} = values;
-        return <>{名称 || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ' + 编码 + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {编码, id} = row;
+        let {id, 名称, 编码} = row;
         let right = <Muted>{}</Muted>;
         let mid = <>{'id ' + id}</>;
-        return <LMR className="px-3 py-2" left={编码} right={mid}/>
+        return <LMR className="px-3 py-2" left={名称 + ' ' + 编码} right={mid}/>
     },
 }
 
 const logisticscentre:TuidUI = {
     CTuidSelect: CTuidSelectLogisticscentre,
     content: (values) => {
-        let {id, 编码} = values;
-        return <>{编码 || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ' + 编码 + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {编码, id} = row;
+        let {名称, 编码, id} = row;
         let right = <Muted>{}</Muted>;
         let mid = <>{'id ' + id}</>;
-        return <LMR className="px-3 py-2" left={编码} right={mid}/>
+        return <LMR className="px-3 py-2" left={名称 + ' ' + 编码} right={mid}/>
     },
 }
 
 const warehouse:TuidUI = {
     CTuidSelect: CTuidSelectWarehouse,
     content: (values) => {
-        let {id, 编码} = values;
-        return <>{编码 || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ' + 编码 + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {编码, id} = row;
+        let {id, 名称, 编码} = row;
         let right = <Muted>{}</Muted>;
         let mid = <>{'id ' + id}</>;
-        return <LMR className="px-3 py-2" left={编码} right={mid}/>
+        return <LMR className="px-3 py-2" left={名称 + ' ' + 编码} right={mid}/>
     },
 }
 
 const goodslocation:TuidUI = {
     CTuidSelect: CTuidSelectGoodslocation,
     content: (values) => {
-        let {id, 名称} = values;
-        return <>{名称 || 'id ' + id + ' ...'}</>;
+        let {id, 名称, 编码} = values;
+        return <>{名称 || ('id ' + id) + ' ' + 编码 + ' ...'}</>;
     },
     rowContent: (row):JSX.Element => {
-        let {名称, id} = row;
+        let {id, 名称, 编码} = row;
         let right = <Muted>{}</Muted>;
         let mid = <>{'id ' + id}</>;
-        return <LMR className="px-3 py-2" left={名称} right={mid}/>
+        return <LMR className="px-3 py-2" left={名称 + ' ' + 编码} right={mid}/>
     },
 }
 

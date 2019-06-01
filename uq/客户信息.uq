@@ -1,7 +1,7 @@
 TUID 客户信息 ver 0.1 (
   id,
   main 名称 char(200) not null,
-  客户编号 char(100) not null,
+  main 编码 char(100) not null,
   查询码 char(100),
   法人代表 char(100),
   收货地址 char(200),
@@ -9,7 +9,7 @@ TUID 客户信息 ver 0.1 (
   运输方式 char(50),
   联系人 char(100),
   search (名称),
-  unique (名称),
+  unique (编码),
 );
 
 MAP 客户状态 ver 0.2 (

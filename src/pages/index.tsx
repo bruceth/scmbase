@@ -12,7 +12,7 @@ const baseInfoNames : string[] = [
 ]
 
 const sheetNames : string[] = [
-  "采购订单", "采购收货"
+  "采购订单", "采购收货","销售订单"
 ]
 
 class NavTuidMainPage extends VPage<CApp> {

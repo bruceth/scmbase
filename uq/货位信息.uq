@@ -1,8 +1,8 @@
 TUID 货位信息 ver 0.1 (
   id,
-  编码方式 char(100) not null,
   main 编码 char(200) not null,
-  名称 char(100) not null,
+  main 名称 char(100) not null,
+  编码方式 char(100) not null,
   查询码 char(100),
   所属库区 char(100),
   所属库区名称 char(100),

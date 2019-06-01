@@ -57,8 +57,8 @@ export class CTuidEditProduct extends CTuidEdit {
 
 const schemaProduct : Schema = [
   {name: 'id', type: 'id', required: false},
-  {name: 'discription', type: 'string', required: true, maxLength: 100} as StringSchema,
-  {name: '商品编号', type: 'string', required: false, maxLength: 100} as StringSchema,
+  {name: '名称', type: 'string', required: true, maxLength: 100} as StringSchema,
+  {name: '编码', type: 'string', required: false, maxLength: 100} as StringSchema,
   {name: '查询码', type: 'string', required: false, maxLength: 100} as StringSchema,
   {name: '通用名称', type: 'string', maxLength: 100} as StringSchema,
   {name: '生产厂商', type: 'id', required: false, maxLength: 100} as IdSchema,
@@ -108,8 +108,8 @@ class VTuidEditProduct extends VEntity<Tuid, TuidUI, CTuidEditProduct> {
   protected uiSchema : UiSchema = {
     items : {
       id: { widget: 'id', visible: false } as UiIdItem,
-      discription: { widget: 'text', label: '名称'} as UiTextItem,
-      商品编号: { widget: 'text'} as UiTextItem, 
+      名称: { widget: 'text', label: '名称'} as UiTextItem,
+      编码: { widget: 'text'} as UiTextItem, 
       查询码: { widget: 'text'} as UiTextItem,
       通用名称: { widget: 'text'} as UiTextItem,
       生产厂商: { 
@@ -246,10 +246,12 @@ class VTuidEditProduct extends VEntity<Tuid, TuidUI, CTuidEditProduct> {
       let mapc2 = this.controller.cUq.map("ProductInfo");
       let mapc3 = this.controller.cUq.map("ProductPrice");
       let ret = await this.controller.entity.save(this.cid, this.formData);
-      let {id} = ret;
-      if (id < 0) {
+      let {id, inId} = ret;
+      if (inId < 0  && id < 0) {
         return;
       }
+      if (inId > 0)
+        id = inId;
       this.formData2.product = id;
       this.formData3.product = id;
       let promises:PromiseLike<any>[] = [];

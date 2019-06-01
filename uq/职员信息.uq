@@ -1,7 +1,7 @@
 TUID 职员信息 ver 0.1 (
   id,
   main 编码 char(200) not null,
-  名称 char(100) not null,
+  main 名称 char(100) not null,
   查询码 char(100),
   所属部门 ID 部门信息,
   年龄 char(200),

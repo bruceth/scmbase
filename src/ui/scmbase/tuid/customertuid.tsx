@@ -45,7 +45,7 @@ export class CTuidEditCustomer extends CTuidEdit {
 const schemaCustomer : Schema = [
   {name: 'id', type: 'id', required: false},
   {name: '名称', type: 'string', required: true, maxLength: 100} as StringSchema,
-  {name: '客户编号', type: 'string', required: true, maxLength: 100} as StringSchema,
+  {name: '编码', type: 'string', required: true, maxLength: 100} as StringSchema,
   {name: '查询码', type: 'string', required: false, maxLength: 100} as StringSchema,
   {name: '法人代表', type: 'string', required: false, maxLength: 100} as StringSchema,
   {name: '收货地址', type: 'string', required: false, maxLength: 100} as StringSchema,
@@ -97,7 +97,7 @@ class VTuidEditCustomer extends VTuidEdit {
     items : {
       id: { widget: 'id', visible: false } as UiIdItem,
       名称: { widget: 'text'} as UiTextItem,
-      客户编号: { widget: 'text'} as UiTextItem,
+      编码: { widget: 'text'} as UiTextItem,
       查询码: { widget: 'text'} as UiTextItem,
       法人代表: { widget: 'text'} as UiTextItem,
       收货地址: { widget: 'text'} as UiTextItem,
@@ -231,10 +231,12 @@ class VTuidEditCustomer extends VTuidEdit {
       let mapc2 = this.controller.cUq.map("客户证照信息");
       let mapc3 = this.controller.cUq.map("客户财务信息");
       let ret = await this.controller.entity.save(this.cid, this.formData);
-      let {id} = ret;
-      if (id < 0) {
+      let {id, inId} = ret;
+      if (inId < 0  && id < 0) {
         return;
       }
+      if (inId > 0)
+        id = inId;
       this.formData2.客户 = id;
       this.formData3.客户 = id;
       let promises:PromiseLike<any>[] = [];

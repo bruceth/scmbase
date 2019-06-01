@@ -7,12 +7,29 @@ SHEET 采购收货 ver 0.6 (
     送货人 char(200),
     是否空入 char(10),
     单号 char(100), 
+    随货同行单号 char(100),
+    承运方式 char(100),
+    委托运输单号 char(100),
+    发运地点 char(100),
+    运输单位 char(100),
+    运输方式 char(100),
+    运输工具 char(100),
+    运输状态 char(100),
+    运输车牌号 char(100),
+    温控方式 char(100),
+    温控状态 char(100),
+    启运温度 dec(12,2),
+    到货温度 dec(12,2),
+    启运时间 date,
+    预到货时间 date,
+    到货时间 date,
     ARR products (
         product ID Product not null,
         价格 dec(12,2) not null,
         数量 dec(12,2) not null,
         金额 dec(12,2) not null,
     ),
+    
 )
 Action submit {
     STATE TO END;

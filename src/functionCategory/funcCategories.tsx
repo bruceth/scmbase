@@ -99,7 +99,8 @@ export const funcs = [
     children: [
       { name:"销售订单",
         id: 401,
-        pid: 4 }, 
+        pid: 4,
+        page: "销售订单" }, 
       { name: "销售出库（自建）",
         id: 402,
         pid: 4 }, 
